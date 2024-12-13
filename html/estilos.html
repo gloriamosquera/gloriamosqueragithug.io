@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zapatos Deportivos - Sportgloria</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Sportgloria</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="estilos.html">Estilos</a></li>
+                <li><a href="categorias.html">Categorías</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+                <li><a href="somos.html">somos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="productos">
+        <h2>Zapatos para Mujer</h2>
+        <div class="producto-container">
+            <div class="producto">
+                <img src="../img/producto1.jpg" alt="Zapato Mujer 1">
+                <h3>Zapato Deportivo Mujer</h3>
+                <p>$69.99</p>
+                <a href="#" class="agregar-carrito" onclick="agregarAlCarrito('Zapato Deportivo Mujer', 69.99)">Agregar al carrito</a>
+            </div>
+            <div class="producto">
+                <img src="../img/producto5.webp" alt="Zapato Mujer 2">
+                <h3>Zapato Casual Mujer</h3>
+                <p>$59.99</p>
+                <a href="#" class="agregar-carrito" onclick="agregarAlCarrito('Zapato Casual Mujer', 59.99)">Agregar al carrito</a>
+            </div>
+            <div class="producto">
+                <img src="../img/producto8.jpg" alt="Zapato Mujer 3">
+                <h3>Zapato Running Mujer</h3>
+                <p>$79.99</p>
+                <a href="#" class="agregar-carrito" onclick="agregarAlCarrito('Zapato Running Mujer', 79.99)">Agregar al carrito</a>
+            </div>
+        </div>
+
+        <h2>Zapatos para Hombre</h2>
+        <div class="producto-container">
+            <div class="producto">
+                <img src="../img/producto3.avif" alt="Zapato Hombre 1">
+                <h3>Zapato Deportivo Hombre</h3>
+                <p>$79.99</p>
+                <a href="#" class="agregar-carrito" onclick="agregarAlCarrito('Zapato Deportivo Hombre', 79.99)">Agregar al carrito</a>
+            </div>
+            <div class="producto">
+                <img src="../img/producto9.jpeg" alt="Zapato Hombre 2">
+                <h3>Zapato Casual Hombre</h3>
+                <p>$69.99</p>
+                <a href="#" class="agregar-carrito" onclick="agregarAlCarrito('Zapato Casual Hombre', 69.99)">Agregar al carrito</a>
+            </div>
+            <div class="producto">
+                <img src="../img/producto7.png" alt="Zapato Hombre 3">
+                <h3>Zapato Running Hombre</h3>
+                <p>$89.99</p>
+                <a href="#" class="agregar-carrito" onclick="agregarAlCarrito('Zapato Running Hombre', 89.99)">Agregar al carrito</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Sportgloria | Todos los derechos reservados</p>
+        <p>Contacta con nosotros: contacto@sportgloria.com</p>
+    </footer>
+
+    <script>
+        
+        function agregarAlCarrito(nombre, precio) {
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+            let productoExistente = carrito.find(producto => producto.nombre === nombre);
+            if (productoExistente) {
+                productoExistente.cantidad++;
+            } else {
+                carrito.push({ nombre, precio, cantidad: 1 });
+            }
+
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+
+            window.location.href = 'carrito.html';
+        }
+    </script>
+
+</body>
+</html>
+

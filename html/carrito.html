@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - Sportgloria</title>
+    <link rel="stylesheet" href="../css/carrito.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Sportgloria</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="estilos.html">Estilos</a></li>
+                <li><a href="categorias.html">Categorías</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+                <li><a href="somos.html">somos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="carrito">
+        <h2>Tu Carrito</h2>
+
+        <div id="productos-carrito">
+           
+        </div>
+
+        <div class="resumen">
+            <h3>Total del Carrito</h3>
+            <p id="total-carrito">Total: $0.00</p>
+            <button class="proceder-pago">Proceder al Pago</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Sportgloria | Todos los derechos reservados</p>
+        <p>Contacta con nosotros: contacto@sportgloria.com</p>
+    </footer>
+
+    <script>
+        
+        function cargarCarrito() {
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            const productosCarritoDiv = document.getElementById('productos-carrito');
+            const totalCarritoDiv = document.getElementById('total-carrito');
+            
+            let total = 0;
+            productosCarritoDiv.innerHTML = '';  
+
+            carrito.forEach(producto => {
+               
+                let productoDiv = document.createElement('div');
+                productoDiv.classList.add('producto');
+
+                productoDiv.innerHTML = `
+                    <img src="../img/producto1.jpg" alt="${producto.nombre}">
+                    <div class="detalles">
+                        <h3>${producto.nombre}</h3>
+                        <p>Precio: $${producto.precio}</p>
+                        <label for="cantidad">Cantidad:</label>
+                        <input type="number" value="${producto.cantidad}" min="1" class="cantidad" data-nombre="${producto.nombre}">
+                        <button class="eliminar" onclick="eliminarProducto('${producto.nombre}')">Eliminar</button>
+                    </div>
+                    <div class="total-producto">
+                        <p>Total: $${(producto.precio * producto.cantidad).toFixed(2)}</p>
+                    </div>
+                `;
+
+                productosCarritoDiv.appendChild(productoDiv);
+                total += producto.precio * producto.cantidad;
+            });
+
+            totalCarritoDiv.textContent = `Total: $${total.toFixed(2)}`;
+        }
+
+        function eliminarProducto(nombre) {
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            carrito = carrito.filter(producto => producto.nombre !== nombre);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            cargarCarrito(); 
+        }
+
+        
+        document.addEventListener('input', function(event) {
+            if (event.target.classList.contains('cantidad')) {
+                let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+                let producto = carrito.find(item => item.nombre === event.target.dataset.nombre);
+                producto.cantidad = parseInt(event.target.value);
+                localStorage.setItem('carrito', JSON.stringify(carrito));
+                cargarCarrito();
+            }
+        });
+
+        window.onload = cargarCarrito;
+    </script>
+</body>
+</html>
+

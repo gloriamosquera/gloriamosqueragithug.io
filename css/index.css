@@ -1,0 +1,230 @@
+
+.carousel-container {
+    position: relative;
+    max-width: auto;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel img {
+    width: 75px;
+    height: 75px;
+}
+
+.carousel-container button {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1;
+}
+
+.prev {
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+.next {
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+
+
+
+.carousel-container {
+    position: relative;
+    max-width: 750px; 
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-container.expanded {
+    max-width: 80%; 
+    margin: 40px auto;
+    transform: scale(1.1);
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(112, 36, 36);
+    border: none;
+    font-size: 2rem;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+}
+
+button.prev {
+    left: 10px;
+}
+
+button.next {
+    right: 10px;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 768px) {
+    .carousel-container {
+        max-width: 70%; 
+    }
+
+    .carousel-container.expanded {
+        max-width: 80%; 
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-container {
+        max-width: 90%; 
+    }
+
+    .carousel-container.expanded {
+        max-width: 100%; 
+    }
+}
+
+
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header .logo h1 {
+            margin: 0;
+        }
+
+        header ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        header ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        header ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        header ul li a:hover {
+            color: #ff5722;
+        }
+
+        
+
+        
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            background-color: #333;
+            padding-top: 20px;
+            color: white;
+            height: 100%;
+        }
+
+        .side-menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .side-menu ul li {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .side-menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .side-menu ul li a:hover {
+            background-color: #575757;
+        }
+
+     
+        section {
+            padding: 20px;
+            margin-left: 220px;
+        }
+
+        section h2 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        section p {
+            font-size: 18px;
+            color: #555;
+        }
+
+       
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+
+
